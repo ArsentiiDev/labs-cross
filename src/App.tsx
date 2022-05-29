@@ -3,6 +3,11 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import Page from './pages/Page';
+import Tabs from './pages/Tabs/Tabs';
+import Graph from './pages/Graph/Graph';
+import Json from './pages/Json/Json';
+import Abstract from './pages/Abstract/Abstract';
+import Interfacepage from './pages/Interfacepage/Interfacepage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,21 +27,40 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle } from '@ionic/react';
+import Services from './pages/Services/Services';
 
 setupIonicReact();
 
 const App: React.FC = () => {
   return (
     <IonApp>
+
       <IonReactRouter>
         <IonSplitPane contentId="main">
           <Menu />
+
           <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to="/page/Inbox" />
+            <Route path="/" exact>
+              <Redirect to="/tabs" />
             </Route>
-            <Route path="/page/:name" exact={true}>
-              <Page />
+            <Route path="/tabs">
+              <Tabs />
+            </Route>
+            <Route path="/graph">
+              <Graph />
+            </Route>
+            <Route path="/json">
+              <Json />
+            </Route>
+            <Route path="/abstract">
+              <Abstract />
+            </Route>
+            <Route path="/interfacepage">
+              <Interfacepage />
+            </Route>
+            <Route path="/services">
+              <Services />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>
